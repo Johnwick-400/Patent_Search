@@ -1,9 +1,6 @@
-### LLM in your Transactional Database: 
 ## Build a Patent Search App with Spanner, Vector Search & Gemini 1.0 Pro!
 
-In this article, you will build a patent search application that lets users search an idea or topic in a patent database (made publicly available in BigQuery) for published patents that closely match their topic or context of search using Similarity Vector Search in Spanner.
-
-We've built a system that tackles these challenges head-on:
+I've built a system that tackles these challenges head-on:
 Spanner as the Foundation: We use Google Cloud Spanner, a globally distributed, strongly consistent database, to store our patent data. This ensures data integrity and high availability, crucial for a large-scale application.
 Gemini 1.0 Pro for Summarization and Keyword Extraction: We tap into the power of Gemini 1.0 Pro, Google's advanced large language model, directly within Spanner SQL queries. This allows us to transform complex patent abstracts into concise summaries and extract relevant keywords on the fly.
 Embeddings for Semantic Search: We convert both the LLM-generated summaries and user search queries into numerical representations called embeddings. This enables us to perform semantic search - finding patents based on meaning and context rather than just keyword overlap.
@@ -30,8 +27,8 @@ CREATE TABLE patents_data (
 
 ## Prepare & Load Patent Data
 For building the Patent Search App, we will use the Patent Published dataset in BigQuery. For ease of implementation, I have already prepared the data and made it available here:
-https://github.com/AbiramiSukumaran/spanner-gemini-search/blob/main/insert_into_patents_data.sql
-Run the INSERT scripts[https://github.com/AbiramiSukumaran/spanner-gemini-search/blob/main/insert_into_patents_data.sql](url) in Spanner Studio Editor. This should populate the patents_data table we created in the previous step. This is the patent data we will use for matching with the user search text.
+https://github.com/Johnwick-400/Patent_Search/Patent_data.sql
+Run the INSERT scripts[https://github.com/Johnwick-400/Patent_Search/Patent_data.sq](url) in Spanner Studio Editor. This should populate the patents_data table we created in the previous step. This is the patent data we will use for matching with the user search text.
 
 ## Create Remote Model for Gemini 1.0 Pro
 We will convert the patent abstracts into a consolidated summary consisting of a title and keywords. For this we will use the Gemini 1.0 Pro model from Vertex AI remotely from Spanner. Run the following DDL from Spanned Studio Editor:
