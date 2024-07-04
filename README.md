@@ -26,8 +26,8 @@ CREATE TABLE patents_data (
 ) PRIMARY KEY (id);
 
 ## Prepare & Load Patent Data
-For building the Patent Search App, we will use the Patent Published dataset in BigQuery. For ease of implementation, I have already prepared the data and made it available here:
-https://github.com/Johnwick-400/Patent_Search/patent_data.sql
+For building the Patent Search App, we will use the Patent Published dataset in BigQuery. For ease of implementation, I have already prepared the data and made it available here:https://github.com/Johnwick-400/Patent_Search/patent_data.sql
+
 Run the INSERT scripts[https://github.com/Johnwick-400/Patent_Search/patent_data.sql](url) in Spanner Studio Editor. This should populate the patents_data table we created in the previous step. This is the patent data we will use for matching with the user search text.
 
 ## Create Remote Model for Gemini 1.0 Pro
